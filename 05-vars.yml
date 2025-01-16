@@ -3,8 +3,10 @@
   hosts: local
   connection: local
   vars:
-    course=DevOps
+    course: DevOps
   tasks: 
   - name: variable
     ansible.builtin.debug:
       msg: "{{course}}"
+
+
