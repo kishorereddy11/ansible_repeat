@@ -6,3 +6,8 @@
   - name: hello playbook
     ansible.builtin.debug:
       msg: "hello playbook"
+    registry: result
+
+  - name: print result
+    ansible.builtin.debug:
+      msg: {{result}}
