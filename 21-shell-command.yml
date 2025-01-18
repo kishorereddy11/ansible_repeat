@@ -14,9 +14,10 @@
     ansible.builtin.command: lsffff -ltr
     register: command_result
     ignore_errors: true
-  # - name: print output
-  #   ansible.builtin.debug:
-  #     msg: "{{code: command_result.rc}}"
+
+  - name: print output
+    ansible.builtin.debug:
+      msg: "{{code: command_result.rc}}"
   
   - name: Run a command
     ansible.builtin.command: /bin/echo "Hello, World!"
