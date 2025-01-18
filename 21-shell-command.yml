@@ -5,5 +5,7 @@
   tasks:
   - name: command ls command 
     ansible.builtin.command: ls -ltr > /tmp/output.txt
+    ignore_errors: true
+
   - name: shell ls command
     ansible.builtin.shell: ls -ltr > /tmp/output.txt
