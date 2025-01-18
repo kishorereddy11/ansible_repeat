@@ -17,7 +17,7 @@
 
   - name: print output
     ansible.builtin.debug:
-      msg: "{{  command_result.rc }}"
+      msg: " Return code: {{  command_result.rc }}"
   
   - name: Run a command
     ansible.builtin.command: /bin/echo "Hello, World!"
