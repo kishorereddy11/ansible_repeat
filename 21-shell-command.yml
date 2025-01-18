@@ -17,3 +17,12 @@
   - name: print output
     ansible.builtin.debug:
       msg: "{{code: command_result.rc}}"
+  
+  - name: Run a command
+  ansible.builtin.command: /bin/echo "Hello, World!"
+  register: result
+
+- name: Display the return code
+  ansible.builtin.debug:
+    msg: "Return code: {{ result.rc }}"
+
