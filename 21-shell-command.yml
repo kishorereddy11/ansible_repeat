@@ -16,4 +16,4 @@
     
   - name: print output
     ansible.builtin.debug:
-      msg: "{{command_result}}"
+      msg: "{{command_result.rc}}"
