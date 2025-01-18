@@ -11,7 +11,7 @@
     ansible.builtin.shell: ls -ltr > /tmp/output.txt
 
   - name: ls command
-    ansible.builtin.command: ls -ltr
+    ansible.builtin.command: lsffff -ltr
     register: command_result
     
   - name: print output
