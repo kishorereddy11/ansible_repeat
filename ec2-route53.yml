@@ -40,14 +40,14 @@
       msg: "{{item.instances[0].network_interfaces[0].private_ip_address}}"
     loop: "{{ec2_info.results}}"
 
-  - name: create private ip address 
-    amazon.aws.route53:
-      state: present
-      zone: "{{item.item}}.{{zone}}"
-      type: A
-      ttl: 1
-      value: "{{item.instances[0].private_ip_address}}"
-      overwrite: true
-      wait: true
-    loop: "{{ec2_info.results}}"
+  # - name: create private ip address 
+  #   amazon.aws.route53:
+  #     state: present
+  #     zone: "{{item.item}}.{{zone}}"
+  #     type: A
+  #     ttl: 1
+  #     value: "{{item.instances[0].private_ip_address}}"
+  #     overwrite: true
+  #     wait: true
+  #   loop: "{{ec2_info.results}}"
       
