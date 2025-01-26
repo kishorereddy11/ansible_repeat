@@ -32,7 +32,7 @@
 
   - name: print ec2 instance
     ansible.builtin.debug:
-      msg: "{{ec2_info}}"
+      msg: "test"
   - name: print private ip address
     ansible.builtin.debug:
       msg: "{{item.instances[0].network_interfaces[0]}}"
