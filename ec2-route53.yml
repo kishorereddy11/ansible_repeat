@@ -5,7 +5,7 @@
   tasks:
   - name: python libs
     ansible.builtin.pip:
-    - name: " {{ item }}"
+      name: " {{ item }}"
     loop: 
     - boto3
     - botocore
