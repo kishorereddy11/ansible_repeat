@@ -8,6 +8,7 @@
     image_id: ami-09c813fb71547fc4f
     subnet_id: subnet-00d643a230b615c78
     vpc_id: vpc-0f4319f8fc9fa30af
+    zone: kommanuthala.store
     instances:
     - mysql
     - backend
@@ -37,3 +38,13 @@
     ansible.builtin.debug:
       msg: "{{item.instances[0].network_interfaces[0].private_ip_address}}"
     loop: "{{ec2_info.results}}"
+
+  - name: create private ip address 
+    amazon.aws.route53:
+      state: present
+      zone: "{{item.item}}.{{zone}}"
+      type: A
+      ttl: 1
+      value: "{{item.instances[0].network_interfaces[0].private_ip_address}}"
+    loop: "{{ec2_info.results}}"
+    overwrite: true
