@@ -34,6 +34,7 @@
   - name: print ec2 instance
     ansible.builtin.debug:
       msg: "test"
+      
   - name: print private ip address
     ansible.builtin.debug:
       msg: "{{item.instances[0].network_interfaces[0].private_ip_address}}"
@@ -46,5 +47,7 @@
       type: A
       ttl: 1
       value: "{{item.instances[0].network_interfaces[0].private_ip_address}}"
+      overwrite: true
+      wait: true
     loop: "{{ec2_info.results}}"
-    overwrite: true
+      
