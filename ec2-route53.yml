@@ -2,6 +2,16 @@
 - name: create ec2 instance 
   hosts: local
   connection: local
+  vars:
+    instance_type: t2.micro
+    security_group: sg-06664a65d9522acf5 
+    image_id: ami-09c813fb71547fc4f
+    subnet_id: subnet-00d643a230b615c78
+    vpc_id: vpc-0f4319f8fc9fa30af
+    instances:
+    - mysql
+    - backend
+    - frontend
   tasks:
   - name: python libs
     ansible.builtin.pip:
@@ -9,3 +19,13 @@
     loop: 
     - boto3
     - botocore
+
+  - name: create ec2 instance
+    amazon.aws.ec2_instance:
+      name: "{{ item }}"
+      subnet_id: " {{subnet_id}}"
+      security_group: "{{security_group}}"
+      image_id: "{{image_id}}"
+      instance_type: "{{instance_type}}"
+    loop: "{{ instances }}"
+
