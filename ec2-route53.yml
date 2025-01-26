@@ -1,0 +1,11 @@
+---
+- name: create ec2 instance 
+  hosts: local
+  connection: local
+  tasks:
+  - name: python libs
+    ansible.builtin.pip:
+    - name: " {{ item }}"
+    loop: 
+    - boto3
+    - botocore
